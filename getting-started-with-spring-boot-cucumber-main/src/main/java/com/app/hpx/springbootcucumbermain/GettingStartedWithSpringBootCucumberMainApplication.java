@@ -9,5 +9,4 @@ public class GettingStartedWithSpringBootCucumberMainApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GettingStartedWithSpringBootCucumberMainApplication.class, args);
 	}
-
 }
