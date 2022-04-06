@@ -11,7 +11,7 @@ import io.cucumber.spring.CucumberContextConfiguration;
 @CucumberOptions(
 		features = {"classpath:feature"},
 		glue = {"com.app.hpx.cucumber.bdd.stepdefs"},
-		plugin = {"pretty", "html:target/cucumber.html", "json:target/cucumber.json"},
+		plugin = {"pretty", "html:target/results", "json:target/cucumber.json"},
 		tags= "@validation")
 @CucumberContextConfiguration
 public class RunnerIT {

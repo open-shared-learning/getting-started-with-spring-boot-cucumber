@@ -12,7 +12,7 @@
     <packaging>jar</packaging>
 
     <artifactId>getting-started-with-spring-boot-cucumber-main</artifactId>
-    <version>${interface.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>getting-started-with-spring-boot-cucumber-main</name>
     <description>Getting Started with Cucumber BDD Testing for Spring Boot Application - Main Module</description>
