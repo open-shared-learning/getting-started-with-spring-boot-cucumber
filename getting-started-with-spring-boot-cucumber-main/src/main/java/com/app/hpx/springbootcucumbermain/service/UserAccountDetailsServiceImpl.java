@@ -44,11 +44,27 @@ public class UserAccountDetailsServiceImpl implements UserAccountDetailsService{
 				userAccountDetailsEntity.setCreateTimeStamp(LocalDateTime.now());
 				userAccountDetailsEntity.setUpdateTimeStamp(LocalDateTime.now());
 				
-				LOG.info("Service: sending {}", userAccountDetailsEntity);
+				LOG.info("Service -> Create User : {}", userAccountDetailsEntity);
 
 				BeanUtils.copyProperties(userAccountDetailsRequest, userAccountDetailsEntity);
 				UserAccountDetailsEntity responseEntity = userAccountDetailsRepository.createUserAccountDetails(userAccountDetailsEntity);
 
+				BeanUtils.copyProperties(responseEntity, userAccountDetailsResponse);
+				return userAccountDetailsResponse;
+		}
+		
+		@Override
+		public UserAccountDetailsResponse updateUserAccountDetails(String userKey, UserAccountDetailsRequest userAccountDetailsRequest) {
+				UserAccountDetailsEntity userAccountDetailsEntity = new UserAccountDetailsEntity();
+				UserAccountDetailsResponse userAccountDetailsResponse = new UserAccountDetailsResponse();
+				
+				/* Prepare Entity and call repository */
+				userAccountDetailsEntity.setUpdateTimeStamp(LocalDateTime.now());
+				LOG.info("Service -> Update User : {}", userAccountDetailsEntity);
+				
+				BeanUtils.copyProperties(userAccountDetailsRequest, userAccountDetailsEntity);
+				UserAccountDetailsEntity responseEntity = userAccountDetailsRepository.updateAccountDetails(userKey, userAccountDetailsEntity);
+				
 				BeanUtils.copyProperties(responseEntity, userAccountDetailsResponse);
 				return userAccountDetailsResponse;
 		}

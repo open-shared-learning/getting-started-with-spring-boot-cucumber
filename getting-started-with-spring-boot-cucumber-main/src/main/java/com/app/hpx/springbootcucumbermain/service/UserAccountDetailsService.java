@@ -5,4 +5,7 @@ import com.app.hpx.springbootcucumberinterface.response.UserAccountDetailsRespon
 
 public interface UserAccountDetailsService {
 		UserAccountDetailsResponse createUserAccountDetails(UserAccountDetailsRequest userAccountDetailsRequest);
+
+		UserAccountDetailsResponse updateUserAccountDetails(String userKey, UserAccountDetailsRequest userAccountDetailsRequest);
+		
 }
