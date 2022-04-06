@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.app.hpx</groupId>
         <artifactId>getting-started-with-spring-boot-cucumber</artifactId>
-        <version>${interface.version}</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <packaging>jar</packaging>
@@ -48,14 +48,4 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
