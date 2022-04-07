@@ -55,12 +55,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
             <scope>test</scope>
         </dependency>
 
@@ -81,7 +75,7 @@
                 <version>3.0.0-M6</version>
                 <configuration>
                     <includes>
-                        <include>**/*IT.java</include>
+                        <include>com/app/hpx/cucumber/bdd/stepdefs/RunnerIT.java</include>
                     </includes>
                 </configuration>
                 <executions>
