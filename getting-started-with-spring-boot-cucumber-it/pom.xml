@@ -1,45 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.app.hpx</groupId>
-		<artifactId>getting-started-with-spring-boot-cucumber</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.app.hpx</groupId>
+        <artifactId>getting-started-with-spring-boot-cucumber</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-	<packaging>jar</packaging>
+    <packaging>jar</packaging>
 
-	<artifactId>getting-started-with-spring-boot-cucumber-it</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <artifactId>getting-started-with-spring-boot-cucumber-it</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-	<name>getting-started-with-spring-boot-cucumber-it</name>
-	<description>Getting Started with Cucumber BDD Testing for Spring Boot Application - Integration Test Module</description>
+    <name>getting-started-with-spring-boot-cucumber-it</name>
+    <description>Getting Started with Cucumber BDD Testing for Spring Boot Application - Integration Test Module
+    </description>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <java.version>1.8</java.version>
+        <cucumber-api.version>7.2.3</cucumber-api.version>
+        <interface.version>0.0.1-SNAPSHOT</interface.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-api.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber-api.version}</version>
+            <scope>test</scope>
+        </dependency>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+            <version>${cucumber-api.version}</version>
+        </dependency>
+
+        <!-- This is needed if you use RestTemplate to make RestAPI calls.
+        This also facilitates response data conversion to JSON/XML/HTML using
+        Jackson Databind & JSON converter dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Using Interface Objects that are standard across the domain -->
+        <dependency>
+            <groupId>com.app.hpx</groupId>
+            <artifactId>getting-started-with-spring-boot-cucumber-interface</artifactId>
+            <version>${interface.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M6</version>
+                <configuration>
+                    <includes>
+                        <include>com/app/hpx/cucumber/bdd/stepdefs/RunnerIT.java</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>verify</goal>
+                            <goal>integration-test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
