@@ -65,10 +65,45 @@
             <version>${interface.version}</version>
             <scope>compile</scope>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M6</version>
+                    <configuration>
+                        <includes>
+                            <include> **/RunnerIT*.java</include>
+                        </includes>
+
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
